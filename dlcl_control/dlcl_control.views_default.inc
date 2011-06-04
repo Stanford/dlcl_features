@@ -4468,6 +4468,7 @@ function dlcl_control_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
+  $handler->override_option('title', 'DLCL Control Panel');
   $handler->override_option('header', 'We can in this view display some central content like a welcome message and some blocks. Maybe do away with it altogether?
 
 (this content currently the HTML header of the page view at /admin/build/views/edit/control_panel_dlcl )');
