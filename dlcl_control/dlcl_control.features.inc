@@ -9,7 +9,7 @@ function dlcl_control_rules_defaults() {
       'rules_redirect_editors_to_control_panel_on_login' => array(
         '#type' => 'rule',
         '#set' => 'event_user_login',
-        '#label' => 'redirect editors to the control panel on login',
+        '#label' => 'Redirect editors to the control panel on login',
         '#active' => 1,
         '#weight' => '0',
         '#categories' => array(
@@ -19,18 +19,7 @@ function dlcl_control_rules_defaults() {
         '#status' => 'default',
         '#conditions' => array(
           '0' => array(
-            '#weight' => 0,
-            '#info' => array(
-              'label' => 'User has role(s)',
-              'arguments' => array(
-                'user' => array(
-                  'type' => 'user',
-                  'label' => 'User',
-                ),
-              ),
-              'module' => 'User',
-            ),
-            '#name' => 'rules_condition_user_hasrole',
+            '#type' => 'condition',
             '#settings' => array(
               'roles' => array(
                 '0' => 9,
@@ -43,20 +32,23 @@ function dlcl_control_rules_defaults() {
                 'user' => 'account',
               ),
             ),
-            '#type' => 'condition',
+            '#name' => 'rules_condition_user_hasrole',
+            '#info' => array(
+              'label' => 'User has role(s)',
+              'arguments' => array(
+                'user' => array(
+                  'type' => 'user',
+                  'label' => 'User',
+                ),
+              ),
+              'module' => 'User',
+            ),
+            '#weight' => 0,
           ),
         ),
         '#actions' => array(
           '0' => array(
-            '#type' => 'action',
-            '#settings' => array(
-              'path' => 'admin/control',
-              'query' => '',
-              'fragment' => '',
-              'force' => 1,
-              'immediate' => 0,
-            ),
-            '#name' => 'rules_action_drupal_goto',
+            '#weight' => 0,
             '#info' => array(
               'label' => 'redirect to control panel',
               'label callback' => FALSE,
@@ -67,7 +59,15 @@ function dlcl_control_rules_defaults() {
                 '2' => 'fragment',
               ),
             ),
-            '#weight' => 0,
+            '#name' => 'rules_action_drupal_goto',
+            '#settings' => array(
+              'path' => 'admin/control',
+              'query' => '',
+              'fragment' => '',
+              'force' => 1,
+              'immediate' => 0,
+            ),
+            '#type' => 'action',
           ),
         ),
         '#version' => 6003,
